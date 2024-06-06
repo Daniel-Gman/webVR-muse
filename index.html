@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>A-Frame Forest Environment</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="main.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <a-scene fog="type: exponential; color: #AABBGG; density: 0.1">
+        <!-- Ground Plane -->
+        <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"
+            src="#grassTexture"></a-plane>
+
+        <!-- Sky -->
+        <a-sky color="#88C3EB"></a-sky>
+
+        <!-- Ambient Sound -->
+        <a-sound src="#forestSound" autoplay="true" loop="true" position="0 2 5"></a-sound>
+
+        <!-- Lighting -->
+        <a-light type="ambient" color="#445451"></a-light>
+        <a-light type="directional" intensity="0.6" position="-1 1 0"></a-light>
+
+        <!-- Trees -->
+        <a-entity id="trees">
+            <a-entity position="0 0 -6">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="2 0 -6">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="4 0 -6">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="-2 0 -6">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="-4 0 -6">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="1 0 -8">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="3 0 -8">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="5 0 -8">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="-1 0 -8">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="-3 0 -8">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+            <a-entity position="-5 0 -10">
+                <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
+            </a-entity>
+
+            <!-- Add more trees as needed -->
+        </a-entity>
+
+        <!-- Asset Management System -->
+        <a-assets>
+            <img id="grassTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" crossorigin="anonymous">
+            <a-asset-item id="treeModel" src="src/scene.gltf" crossorigin="anonymous"></a-asset-item>
+            <audio id="forestSound" src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"
+                crossorigin="anonymous"></audio>
+        </a-assets>
+    </a-scene>
+
+    <script>
+        // Debugging to check if assets are loaded
+        document.querySelector('a-scene').addEventListener('loaded', () => {
+            console.log('A-Frame scene loaded');
+        });
+
+        document.querySelector('#treeModel').addEventListener('loaded', () => {
+            console.log('Tree model loaded');
+        });
+
+        document.querySelector('#grassTexture').addEventListener('loaded', () => {
+            console.log('Grass texture loaded');
+        });
+
+        document.querySelector('#forestSound').addEventListener('loaded', () => {
+            console.log('Forest sound loaded');
+        });
+    </script>
+</body>
+
+</html>
