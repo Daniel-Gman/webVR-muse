@@ -6,6 +6,7 @@
     <title>A-Frame Forest Environment</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             margin: 0;
@@ -19,9 +20,11 @@
         <!-- Ground Plane -->
         <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"
             src="#grassTexture"></a-plane>
+        </a-plane>
 
         <!-- Sky -->
-        <a-sky color="#88C3EB"></a-sky>
+        <a-sky src="sky.jpg">
+        </a-sky>
 
         <!-- Ambient Sound -->
         <a-sound src="#forestSound" autoplay="true" loop="true" position="0 2 5"></a-sound>
@@ -69,33 +72,26 @@
             <!-- Add more trees as needed -->
         </a-entity>
 
+        <a-entity id="ocean" visible="false" position="0 1 0">
+            <a-obj-model scale="6 2 4" src="#oceans" color="blue"></a-obj-model>
+        </a-entity>
+
+        <a-entity id="boat" visible="false">
+            <a-obj-model src="#boats" visible="true" position="-8 1 -6" rotation="0 90 0" color="brown"></a-obj-model>
+        </a-entity>
+
+
         <!-- Asset Management System -->
         <a-assets>
             <img id="grassTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" crossorigin="anonymous">
             <a-asset-item id="treeModel" src="src/scene.gltf" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="oceans" src="ocean/Ocean.obj"></a-asset-item>
+            <a-assets-item id="boats" src="boat/Boot02.obj"></a-assets-item>
             <audio id="forestSound" src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"
                 crossorigin="anonymous"></audio>
         </a-assets>
     </a-scene>
 
-    <script>
-        // Debugging to check if assets are loaded
-        document.querySelector('a-scene').addEventListener('loaded', () => {
-            console.log('A-Frame scene loaded');
-        });
-
-        document.querySelector('#treeModel').addEventListener('loaded', () => {
-            console.log('Tree model loaded');
-        });
-
-        document.querySelector('#grassTexture').addEventListener('loaded', () => {
-            console.log('Grass texture loaded');
-        });
-
-        document.querySelector('#forestSound').addEventListener('loaded', () => {
-            console.log('Forest sound loaded');
-        });
-    </script>
 </body>
 
 </html>
