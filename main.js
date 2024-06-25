@@ -16,7 +16,7 @@ window.onload = () => {
         boat.setAttribute('animation', {
             property: 'position',
             to: '28 0 -2',
-            dur: 20000,
+            dur: 30000,
             easing: 'linear'
         });
         console.log("The boat is now floating.");
@@ -38,9 +38,13 @@ window.onload = () => {
                 nyc.setAttribute('visible', 'true');
                 console.log(nyc)
                 console.log("The lumber and other elements are now hidden.");
-            }, 10000); // Hide after 10 seconds
-        }, 20000); // Initial animation duration
-    }, 20000); // Initial delay
+            }, 15000); // Hide after 15 seconds
+        }, 30000); // Initial animation duration
+    }, 30000); // Initial delay
+
+    setTimeout(() => {
+        location.reload();
+    }, 110000);
 };
 
 
