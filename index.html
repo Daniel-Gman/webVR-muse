@@ -16,15 +16,13 @@
 </head>
 
 <body>
-    <a-scene fog="type: exponential; color: #AABBGG; density: 0.1">
+    <a-scene>
         <!-- Ground Plane -->
-        <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"
+        <a-plane id="plane" visible="true" position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"
             src="#grassTexture"></a-plane>
-        </a-plane>
 
         <!-- Sky -->
-        <a-sky src="sky.jpg">
-        </a-sky>
+        <a-sky src="#sky"></a-sky>
 
         <!-- Ambient Sound -->
         <a-sound src="#forestSound" autoplay="true" loop="true" position="0 2 5"></a-sound>
@@ -35,6 +33,7 @@
 
         <!-- Trees -->
         <a-entity id="trees">
+            <!-- Tree entities -->
             <a-entity position="0 0 -6">
                 <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
             </a-entity>
@@ -68,30 +67,87 @@
             <a-entity position="-5 0 -10">
                 <a-gltf-model src="#treeModel" scale="0.2 0.2 0.2"></a-gltf-model>
             </a-entity>
-
-            <!-- Add more trees as needed -->
         </a-entity>
 
+        <!-- Ocean -->
         <a-entity id="ocean" visible="false" position="0 1 0">
             <a-obj-model scale="6 2 4" src="#oceans" color="blue"></a-obj-model>
         </a-entity>
 
+        <!-- Boat -->
         <a-entity id="boat" visible="false">
-            <a-obj-model src="#boats" visible="true" position="-8 1 -6" rotation="0 90 0" color="brown"></a-obj-model>
+            <a-obj-model material="src: #image" src="#boats" visible="true" position="-8 1 -6" rotation="0 90 0"
+                color="brown"></a-obj-model>
+        </a-entity>
+
+        <!-- Lumber -->
+        <a-entity visible="false" id="lumberyard">
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="1 0.1 1"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="3 0.1 2"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="5 0.1 3"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="-3 0.1 4"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="-5 0.1 -1"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="2 0.1 -2"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="-2 0.1 -3"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="1 0.1 -4"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="5 0.1 -6"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="-5 0.1 7"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="11 0.1 -1"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="2 0.1 -11"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="9 0.1 4"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="4 0.1 -5"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="8 0.1 -7"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="5 0.1 -3"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="-5 0.1 5"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="-3 0.1 7"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="-8 0.1 4"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="-13 0.1 -2"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="-6 0.1 8"
+                scale="0.1 0.1 0.1"></a-obj-model>
+            <a-obj-model material="src: #image" src="#lumbers" visible="true" position="8 0.1 8"
+                scale="0.1 0.1 0.1"></a-obj-model>
+        </a-entity>
+
+        <a-entity visible="false" id="city">
+            <a-gltf-model src="#newyork" scale="100 100 100" position="60 0 60"></a-gltf-model>
         </a-entity>
 
 
         <!-- Asset Management System -->
         <a-assets>
-            <img id="grassTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" crossorigin="anonymous">
+            <img id="grassTexture" src="/10450_Rectangular_Grass_Patch_v1_Diffuse.jpg" crossorigin="anonymous">
             <a-asset-item id="treeModel" src="src/scene.gltf" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="newyork" src="nyc/scene.gltf" crossorigin="anonymous"></a-asset-item>
             <a-asset-item id="oceans" src="ocean/Ocean.obj"></a-asset-item>
-            <a-assets-item id="boats" src="boat/Boot02.obj"></a-assets-item>
-            <audio id="forestSound" src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"
-                crossorigin="anonymous"></audio>
+            <a-asset-item id="boats" src="boat/Boot02.obj"></a-asset-item>
+            <a-asset-item id="lumbers" src="/lumber/Wood.obj"></a-asset-item>
+            <img id="image" src="lumber/istockphoto-466135044-612x612.jpg" alt="">
+            <img id="sky" src="360_F_237441588_dG7Aq1sZB3Njsw4BazWQkLwEfZm8POHs.jpg" alt="">
+            <audio id="forestSound" src="" crossorigin="anonymous"></audio>
         </a-assets>
     </a-scene>
 
+    <script src="main.js"></script>
 </body>
 
 </html>
